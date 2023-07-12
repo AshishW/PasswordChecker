@@ -2,6 +2,7 @@ import requests
 import hashlib # for sha1 hashing
 import sys
 
+
 def requests_api_data(query_char):
 	url = 'https://api.pwnedpasswords.com/range/' + query_char
 	res = requests.get(url)
@@ -33,10 +34,9 @@ def main(args):
 	return 'done!'
 
 def get_passwords_list():
-	password_file = open("passwords.txt", "r")
-	password_list = password_file.readlines()
-	password_file.close()
-	return password_list
+	with open("passwords.txt", "r") as password_file:
+		password_list = password_file.readlines()
+		return password_list
 
 if __name__ == '__main__':
 	# sys.exit(main(sys.argv[1:])) 
